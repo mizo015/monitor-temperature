@@ -131,4 +131,6 @@ Step 3) : Install Express and Jade
       Note: the app.js file contain all configurations for the application it specifies what template we will be using and what dir are static..etc.
       for more information on how express works visit this link http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/
   
-  -
+  
+
+Application Link: 24.168.37.198:8282/temperature
