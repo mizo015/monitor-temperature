@@ -134,3 +134,5 @@ Step 3) : Install Express and Jade
   
 
 Application Link: http://24.168.37.198:8282/temperature
+
+<a href="https://docs.google.com/presentation/d/1r-xYqukf1tBdi6pyCcjZLB5qm86BcjzxRp1j4OA5ib0/pub?start=false&loop=false&delayms=3000"> Presentation</a>
