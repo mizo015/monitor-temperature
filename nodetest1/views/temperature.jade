@@ -1,0 +1,11 @@
+extends layout
+block content
+  h1 Current Temprature 
+  #example.k-content
+   #gauge-container
+     #gauge
+     input(id="gauge-value"
+         value="#{currentTemperature}")
+   ul
+       each temp, i in temperature
+           li= temp.time
