@@ -23,9 +23,9 @@ exports.temperature = function(db) {
 };
 */
 
-var temp;
+var temp = new Array();
 var lastTemp;
-
+var index =0;
 
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('temperature');
@@ -34,8 +34,8 @@ db.each("SELECT time, value FROM temperature WHERE time = (SELECT MAX(time) from
 	console.log("last temperature entered is : "+ lastTemp);
 });
 
-db.all("SELECT time, value FROM temperature", function(err, rows){
-	temp = rows;
+db.each("SELECT time, value FROM temperature", function(err, row){
+	temp[index++] = row;
 	console.dir(temp);
 });
 //console.dir(temp);

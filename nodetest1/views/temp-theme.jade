@@ -7,11 +7,8 @@ html
     //
        ICONS 
     link(rel='stylesheet', type='text/css', href='theme/css/component.css')
-    link(href='http://cdn.kendostatic.com/2013.2.918/styles/kendo.common.min.css', rel='stylesheet')
-    link(href='http://cdn.kendostatic.com/2013.2.918//styles/kendo.default.min.css', rel='stylesheet')
     script(src='theme/js/modernizr.custom.js')
     script(src='http://code.jquery.com/jquery-1.9.1.min.js')
-    script(src='http://cdn.kendostatic.com/2013.2.918/js/kendo.all.min.js')
     script(src='theme/js/raphael.2.1.0.min.js')
     script(type='text/javascript', src='https://www.google.com/jsapi')
     script(type='text/javascript')
@@ -20,7 +17,7 @@ html
       function drawChart() {
       var data = google.visualization.arrayToDataTable([
       ['Label', 'Value'],
-      ['', 80]
+      ['', #{currentTemperature}]
       ]);
       var options = {
       width: 500, height: 300,
@@ -34,68 +31,56 @@ html
       }
     script(type='text/javascript')
       //Google Line chart
+      var length_of_data = #{temperature.length};
+      console.log(length_of_data);
+      var j = new Number(5);
+      for (var i=0; i<length_of_data ; i++) {
+      console.log("#{temperature[0].value}");
+      }
+      //console.log(list.length);
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
       var data = google.visualization.arrayToDataTable([
       ['Date', 'Temperature'],
-      ['2004',  1000, ],
+      ['#{temperature[0].time}',  #{temperature[0].value} ],
+      ['#{temperature[1].time}', #{temperature[1].value} ],
+      ['#{temperature[2].time}', #{temperature[2].value} ],
+      ['#{temperature[3].time}', #{temperature[3].value} ],
+      ['#{temperature[4].time}', #{temperature[4].value} ],
+      ['#{temperature[5].time}', #{temperature[5].value} ],
+      ['#{temperature[6].time}', #{temperature[6].value} ],
+      ['#{temperature[7].time}', #{temperature[7].value} ],
+      ['#{temperature[8].time}', #{temperature[8].value} ],
+      ['#{temperature[9].time}',  #{temperature[9].value} ],
+      ['#{temperature[10].time}', #{temperature[10].value} ],
+      ['#{temperature[12].time}', #{temperature[12].value} ],
+      ['#{temperature[13].time}', #{temperature[13].value} ],
+      ['#{temperature[14].time}', #{temperature[14].value} ],
+      ['#{temperature[15].time}', #{temperature[15].value} ],
+      ['#{temperature[16].time}', #{temperature[16].value} ],
+      ['#{temperature[17].time}', #{temperature[17].value} ],
+      ['#{temperature[18].time}', #{temperature[18].value} ]
       ]);
       var options = {
-      title: ''
+      title: '',
+      //hAxis.minValue: 0,
+      //hAxis.maxValue: 120,
       };
       var chart = new google.visualization.LineChart(document.getElementById('line_chart_div'));
-      chart.draw(data, options);
+      chart.draw(data, options);i
       }
-    //
-       Kendo Plugin
-    script
-      function createGauge() {
-      $("#gauge").kendoRadialGauge({
-      pointer: {
-      value: $("#gauge-value").val()
-      },
-      scale: {
-      minorUnit: 5,
-      startAngle: -30,
-      endAngle: 210,
-      max: 180
-      }
-      });
-      }
-      $(document).ready(function() {
-      createGauge();
-      function updateValue() {
-      $("#gauge").data("kendoRadialGauge").value($("#gauge-value").val());
-      }
-      if (kendo.ui.Slider) {
-      $("#gauge-value").kendoSlider({
-      min: 0,
-      max: 180,
-      showButtons: false,
-      change: updateValue
-      });
-      } else {
-      $("#gauge-value").change(updateValue);
-      }
-      $(document).bind("kendo:skinChange", function(e) {
-      createGauge();
-      });
-      });
   body
     div
       .container
         #bl-main.bl-main
           section
             .bl-box
-              h2.bl-icon.bl-icon-about About
+              h2.bl-icon.bl-icon-about About 
             .bl-content
-              h2 About this layout
+              h2 About
               p
-                #example.k-content
-                  #gauge-container
-                    #gauge
-                    input#gauge-value(value='65')
+                a(href='https://docs.google.com/presentation/d/1r-xYqukf1tBdi6pyCcjZLB5qm86BcjzxRp1j4OA5ib0/edit?usp=sharing' value='LINK') Presentation
             span.bl-icon.bl-icon-close
           section#bl-work-section
             .bl-box
